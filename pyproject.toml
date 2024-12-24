@@ -6,7 +6,7 @@ authors = ["Vinicius <vini_532cursos@hotmail.com>"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
-python = "^3.12"
+python = "3.12.*"
 fastapi = {extras = ["standard"], version = "^0.115.6"}
 
 [tool.ruff]
