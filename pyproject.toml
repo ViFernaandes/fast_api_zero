@@ -8,6 +8,7 @@ readme = "README.md"
 [tool.poetry.dependencies]
 python = "3.12.*"
 fastapi = {extras = ["standard"], version = "^0.115.6"}
+pydantic = {extras = ["email"], version = "^2.10.4"}
 
 [tool.ruff]
 line-length = 79
