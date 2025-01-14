@@ -9,6 +9,9 @@ readme = "README.md"
 python = "3.12.*"
 fastapi = {extras = ["standard"], version = "^0.115.6"}
 pydantic = {extras = ["email"], version = "^2.10.4"}
+sqlalchemy = "^2.0.37"
+pydantic-settings = "2.3.4"
+alembic = "^1.14.0"
 
 [tool.ruff]
 line-length = 79
