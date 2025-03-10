@@ -12,8 +12,6 @@ from fast_api_do_zero.database import get_session
 from fast_api_do_zero.models import User, table_registry
 from fast_api_do_zero.security import get_password_hash
 
-SECRET_KEY = 'your-secret-key'
-
 
 @pytest.fixture
 def session():
@@ -83,7 +81,7 @@ def mock_db_time():
 @pytest.fixture
 def token(client, user):
     response = client.post(
-        '/token',
+        '/auth/token',
         data={'username': user.email, 'password': user.clean_password},
     )
 
