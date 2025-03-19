@@ -88,9 +88,9 @@ def test_delete_user(client, user, token):
     assert response.json() == {'message': 'User deleted'}
 
 
-def test_delete_not_user(client, token, user):
+def test_delete_not_user(client, token, other_user):
     response = client.delete(
-        f'/users/{user.id + 1}',
+        f'/users/{other_user.id}',
         headers={'Authorization': f'Bearer {token}'},
     )
 
@@ -124,9 +124,9 @@ def test_upadte_not_username(client, user):
     assert response.json() == {'detail': 'Could not validate credentials'}
 
 
-def test_upadte_userid_different_from_user(client, token, user):
+def test_upadte_userid_different_from_user(client, token, other_user):
     response = client.put(
-        f'/users/{user.id + 1}',
+        f'/users/{other_user.id}',
         headers={'Authorization': f'Bearer {token}'},
         json={
             'username': 'Teste',

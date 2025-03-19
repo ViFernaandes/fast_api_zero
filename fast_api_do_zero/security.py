@@ -5,7 +5,7 @@ from zoneinfo import ZoneInfo
 from fastapi import Depends, HTTPException
 from fastapi.security import OAuth2PasswordBearer
 from jwt import decode, encode
-from jwt.exceptions import PyJWTError
+from jwt.exceptions import ExpiredSignatureError, PyJWTError
 from pwdlib import PasswordHash
 from sqlalchemy import select
 from sqlalchemy.orm import Session
@@ -58,6 +58,8 @@ def get_current_user(
         username: str = payload.get('sub')
         if not username:
             raise credentials_exception
+    except ExpiredSignatureError:
+        raise credentials_exception
     except PyJWTError:
         raise credentials_exception
 
