@@ -1,12 +1,12 @@
-🐍 FastAPI do Zero:
+### 🐍 FastAPI do Zero:
 
 Este repositório contém todo o conteúdo desenvolvido no curso FastAPI do Zero, ministrado por Eduardo Mendes (Dunossauro). O objetivo do curso é oferecer uma experiência prática e completa no uso do FastAPI, cobrindo desde a criação de APIs RESTful até o deploy da aplicação.
 
-📚 Sobre o Curso:
+### 📚 Sobre o Curso:
 
 O curso foi criado para quem deseja aprender FastAPI do início ao fim, explorando as boas práticas modernas de desenvolvimento com Python. O projeto principal será um gerenciador de tarefas (to-do list) com autenticação de usuários e todas as operações CRUD.
 
-Ferramentas utilizadas:
+### Ferramentas utilizadas:
 - FastAPI 0.115+
 - Pydantic 2.0+
 - SQLAlchemy ORM 2.0+
@@ -16,7 +16,7 @@ Ferramentas utilizadas:
 - Docker para conteinerização
 - Fly.io para deploy
 
-🧠 O que você vai aprender?
+### 🧠 O que você vai aprender?
 
 ✅ Configuração de Ambiente
 Uso do Poetry para gerenciar o projeto
@@ -45,7 +45,7 @@ Integração contínua com GitHub Actions
 Conteinerização com Docker
 Deploy com Fly.io
 
-🧰 Ambiente de Desenvolvimento
+### 🧰 Ambiente de Desenvolvimento
 
 Este projeto utiliza:
 Python 3.13.2
@@ -64,13 +64,13 @@ poetry install
 
 poetry shell
 
-🛠️ Comandos com Taskipy
+### 🛠️ Comandos com Taskipy
 
 Todos os comandos são gerenciados com task:
 
 task --list
 
-Você pode visualizar o material gerado em:
+### Você pode visualizar o material gerado em:
 
 📎 fastapidozero.dunossauro.com
 
