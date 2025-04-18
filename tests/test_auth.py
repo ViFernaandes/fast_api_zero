@@ -94,6 +94,7 @@ def test_refresh_token(client, token):
     assert 'token_type' in data
     assert data['token_type'] == 'bearer'
 
+
 def test_token_expired_dont_refresh(client, user):
     with freeze_time('2023-07-14 12:00:00'):
         response = client.post(

@@ -2,6 +2,7 @@ from contextlib import contextmanager
 from datetime import datetime
 
 import factory
+import factory.fuzzy
 import pytest
 from fastapi.testclient import TestClient
 from sqlalchemy import create_engine, event
@@ -10,8 +11,27 @@ from sqlalchemy.pool import StaticPool
 
 from fast_api_do_zero.app import app
 from fast_api_do_zero.database import get_session
-from fast_api_do_zero.models import User, table_registry
+from fast_api_do_zero.models import Todo, TodoState, User, table_registry
 from fast_api_do_zero.security import get_password_hash
+
+
+class TodoFactory(factory.Factory):
+    class Meta:
+        model = Todo
+
+    title = factory.Faker('text')
+    state = factory.fuzzy.FuzzyChoice(TodoState)
+    description = factory.Faker('text')
+    user_id = 1
+
+
+class UserFactory(factory.Factory):
+    class Meta:
+        model = User
+
+    username = factory.Sequence(lambda n: f'test{n}')
+    email = factory.LazyAttribute(lambda obj: f'{obj.username}@test.com')
+    password = factory.LazyAttribute(lambda obj: f'{obj.username}@exemple.com')
 
 
 @pytest.fixture
@@ -93,12 +113,3 @@ def token(client, user):
     )
 
     return response.json()['access_token']
-
-
-class UserFactory(factory.Factory):
-    class Meta:
-        model = User
-
-    username = factory.Sequence(lambda n: f'test{n}')
-    email = factory.LazyAttribute(lambda obj: f'{obj.username}@test.com')
-    password = factory.LazyAttribute(lambda obj: f'{obj.username}@exemple.com')

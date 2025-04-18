@@ -1,13 +1,15 @@
 from logging.config import fileConfig
-
+from fast_api_do_zero.models import table_registry
+from fast_api_do_zero.settings import Settings
+from dotenv import load_dotenv
 from sqlalchemy import engine_from_config
 from sqlalchemy import pool
 
 from alembic import context
+load_dotenv('.env')
 
-from fast_api_do_zero.models import table_registry
-from fast_api_do_zero.settings import Settings 
-
+# this is the Alembic Config object, which provides
+# access to the values within the .ini file in use.
 config = context.config
 config.set_main_option('sqlalchemy.url', Settings().DATABASE_URL)
 
@@ -45,7 +47,6 @@ def run_migrations_offline() -> None:
         url=url,
         target_metadata=target_metadata,
         literal_binds=True,
-        compare_type=True,
         dialect_opts={"paramstyle": "named"},
     )
 
@@ -68,9 +69,7 @@ def run_migrations_online() -> None:
 
     with connectable.connect() as connection:
         context.configure(
-            connection=connection, 
-            target_metadata=target_metadata,
-            compare_type=True
+            connection=connection, target_metadata=target_metadata
         )
 
         with context.begin_transaction():
