@@ -15,6 +15,7 @@ alembic = "^1.14.0"
 pwdlib = {extras = ["argon2"], version = "^0.2.1"}
 python-multipart = "^0.0.20"
 pyjwt = "^2.10.1"
+psycopg = {extras = ["binary"], version = "^3.2.6"}
 
 [tool.ruff]
 line-length = 79
@@ -35,6 +36,7 @@ pytest-cov = "^6.0.0"
 taskipy = "^1.14.1"
 factory-boy = "^3.3.3"
 freezegun = "^1.5.1"
+testcontainers = "^4.10.0"
 
 [tool.pytest.ini_options]
 pythonpath = "."
