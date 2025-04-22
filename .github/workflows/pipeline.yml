@@ -7,8 +7,21 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
+
     steps:
+      - name: Copia os arquivos do repositório
+        uses: actions/checkout@v3
+
       - name: Instalar o python
         uses: actions/setup-python@v5
         with:
           python-version: "3.12"
+
+      - name: Instalar o poetry
+        run: pipx install poetry
+
+      - name: Instalar dependências
+        run: poetry install
+
+      - name: Executar testes
+        run: poetry run task test
