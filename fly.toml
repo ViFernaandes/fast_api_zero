@@ -1,0 +1,20 @@
+# fly.toml app configuration file generated for fast-api-do-zero on 2025-04-22T15:44:20-03:00
+#
+# See https://fly.io/docs/reference/configuration/ for information about how to use this file.
+#
+
+app = 'fast-api-do-zero'
+primary_region = 'gig'
+
+[build]
+
+[http_service]
+  internal_port = 8000
+  force_https = true
+  auto_stop_machines = 'stop'
+  auto_start_machines = true
+  min_machines_running = 0
+  processes = ['app']
+
+[[vm]]
+  size = 'shared-cpu-1x'
